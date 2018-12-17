@@ -69,7 +69,6 @@
 		</div>
 	</header>
 
-
 	<section class="bg-light" id="team">
 		<div class="container">
 			<div class="row">
@@ -79,76 +78,77 @@
 						action</h3>
 				</div>
 			</div>
-			<h4>${client.firstname} ${client.lastname}</h4>
+			<h2>Welcome ${client.firstname} ${client.lastname}</h2>
+			<div class="virement-button">
+				<a href="virement.html">
+					<button class="button">Faire un virement</button>
+				</a> <a href="index.html">
+					<button class="button">Retour</button>
+				</a>
+			</div>
 			<div class="row">
-				<c:if test="${accounts.size()!=0}">
-					<c:forEach var="account" items="${accounts}">
+				<c:if test="${currentAccounts.size() != 0}">
+					<c:forEach var="currentAccount" items="${currentAccounts}">
 						<div class="col-sm-4">
-							<div class="account">
-								<c:if test="${account instanceof CurrentAccount}">
-									<h4>Compte courant</h4>
-									<img src="./img/compte_courant.jpg" style="width: 50%;">
-									<h6>Numéro de compte : ${account.number}</h6>
-
-									<h6>Solde du compte</h6>
-									<p>${account.balance}&#8364</p>
-									<div class="retraitliquid-button">
-										<a href="retraitliquid.html">
-											<button class="button">Retrait liquide</button>
-										</a>
-									</div>
-									<div class="retraitCB-button">
-										<a href="retraitCB.html">
-											<button class="button">Retrait CB</button>
-										</a>
-									</div>
+							<div class="currentAccounts">
+								<h4>Compte courant</h4>
+								<img src="./img/compte_courant.jpg" style="width: 50%;">
+								<h6>Numéro de compte : ${currentAccount.number}</h6>
+								<h6>Solde du compte</h6>
+								<p>${currentAccount.balance}&#8364</p>
+								<div class="retraitliquid-button">
+									<a href="retraitliquid.html?id=${currentAccount.id}">
+										<button class="button">Retrait liquide</button>
+									</a>
+								</div>
+								<div class="retraitCB-button">
+									<a href="retraitCB.html?id=${currentAccount.id}">
+										<button class="button">Retrait CB</button>
+									</a>
+								</div>
+								<form method="post" action="" onsubmit="validateChequier(event)">
 									<div class="retraitchequier-button">
-										<a href="retraitchequier.html">
+										<a href="retraitchequier.html?id=${currentAccount.id}">
 											<button class="button">Retrait Chéquier</button>
 										</a>
 									</div>
-								</c:if>
-
-								<c:if test="${account instanceof SavingsAccount}">
-									<h4>Compte épargne</h4>
-									<img src="./img/epargne.jpg" style="width: 50%;">
-									<h6>Numéro de compte : ${account.number}</h6>
-
-									<h6>Solde du compte</h6>
-									<p>${account.balance}&#8364</p>
-									<div class="retraitchequier-button">
-										<a href="retraitchequier.html">
-											<button class="button">Retrait Chéquier</button>
-										</a>
-									</div>
-								</c:if>
+								</form>
+								<script src="js/form.js"></script>
 							</div>
 						</div>
 					</c:forEach>
 				</c:if>
-				<c:if test="${accounts.size()==0}">
+				<c:if test="${currentAccounts.size() == 0}">
 					<div class="col-sm-4">
-						<p>Aucun compte pour ce client.</p>
+						<p>Aucun compte courant pour ce client.</p>
+					</div>
+				</c:if>
+				<c:if test="${savingsAccounts.size() != 0}">
+					<c:forEach var="savingsAccount" items="${savingsAccounts}">
+						<div class="col-sm-4">
+							<div class="currentAccounts">
+								<h4>Compte épargne</h4>
+								<img src="./img/compte_courant.jpg" style="width: 50%;">
+								<h6>Numéro de compte : ${savingsAccount.number}</h6>
+								<h6>Solde du compte</h6>
+								<p>${savingsAccount.balance}&#8364</p>
+								<div class="retraitchequier-button">
+									<a href="retraitchequier.html?id=${currentAccount.id}">
+										<button class="button">Retrait Chéquier</button>
+									</a>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</c:if>
+				<c:if test="${savingsAccounts.size() == 0}">
+					<div class="col-sm-4">
+						<p>Aucun compte épargne pour ce client.</p>
 					</div>
 				</c:if>
 			</div>
-			<div>
-			<div class="virement-button">
-				<a href="virement.html">
-					<button class="button">Faire un virement</button>
-				</a>
-			</div>
-			<div class="retour-button">
-				<a href="index.html">
-					<button class="button">Retour</button>
-				</a>
-			</div>
-			</div>
 		</div>
 	</section>
-
-
-
 
 	<!-- Footer -->
 	<footer>
@@ -195,7 +195,6 @@
 
 	<!-- Custom scripts for this template -->
 	<script src="js/agency.min.js"></script>
-
+	<script src="js/chequier.js"></script>
 </body>
-
 </html>

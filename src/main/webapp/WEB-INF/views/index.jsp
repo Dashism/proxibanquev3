@@ -63,7 +63,7 @@
         <div class="row">
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Identifiez vous pour commencer</h2>
-            <h3 class="section-subheading text-muted">Remplissez le champ puis valider </h3>
+            <h3 class="section-subheading text-muted">Remplir le champ puis valider </h3>
           </div>
         </div>
     <form method="post" action="">

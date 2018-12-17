@@ -1,6 +1,7 @@
 package fr.formation.proxi.presentation;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.formation.proxi.metier.entity.Account;
 import fr.formation.proxi.metier.entity.Client;
+import fr.formation.proxi.metier.entity.CurrentAccount;
+import fr.formation.proxi.metier.entity.SavingsAccount;
 
 /**
  * la class IndexrServlet hérite de la class HttpServlet
@@ -36,7 +39,23 @@ public class DashBoardServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Client client = (Client) req.getSession().getAttribute("client");
 		List<Account> accounts = client.getAccounts();
-		req.setAttribute("accounts", accounts);
+		List<CurrentAccount> currentAccounts = new ArrayList<>();
+		List<SavingsAccount> savingsAccounts = new ArrayList<>();
+		for (Account account : accounts) {
+			if (account instanceof CurrentAccount) {
+				CurrentAccount curaccount = (CurrentAccount) account;
+				currentAccounts.add(curaccount);
+			} else {
+				SavingsAccount savaccount = (SavingsAccount) account;
+				savingsAccounts.add(savaccount);
+			}
+		}
+		req.setAttribute("currentAccounts", currentAccounts);
+		System.out.println(currentAccounts);
+		System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+		req.setAttribute("savingsAccounts", savingsAccounts);
+		System.out.println(savingsAccounts);
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(req, resp);
 	}
 	

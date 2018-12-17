@@ -68,7 +68,7 @@ public class IndexServlet extends HttpServlet {
 					this.getServletContext().getRequestDispatcher("/WEB-INF/views/error_dashboard.jsp").forward(req, resp);
 				} else {
 					req.getSession().setAttribute("client", client);
-					this.getServletContext().getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(req, resp);
+					resp.sendRedirect(this.getServletContext().getContextPath() + "/dashboard.html");
 				}
 			} else {
 				req.getSession().setAttribute("client", client);
