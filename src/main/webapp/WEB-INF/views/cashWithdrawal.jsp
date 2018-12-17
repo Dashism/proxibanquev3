@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +62,7 @@
 	<header class="masthead">
 		<div class="container">
 			<div class="intro-text">
-				<div class="intro-lead-in">Bienvenue sur le système
+				<div class="intro-lead-in">Bienvenue sur le systÃ¨me
 					d'information</div>
 				<div class="intro-heading text-uppercase">PROXIBANQUE</div>
 			</div>
@@ -75,32 +75,16 @@
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-uppercase">Retrait de liquide</h2>
 					<h3 class="section-subheading text-muted">Veuillez choisir le
-						montant à débiter</h3>
+						montant Ã  dÃ©biter</h3>
 				</div>
 			</div>
-			<c:if test="${accounts.size()!=0}">
-				<c:forEach var="account" items="${accounts}">
-					<div class="col-sm-4">
-						<div class="account">
-							<c:if test="${account.savings == 'false'}">
-								<h4>Compte courant</h4>
-								<img src="./img/compte_courant.jpg" style="width: 50%;">
-								<h6>Numéro de compte : ${account.number}</h6>
-
-								<h6>Solde du compte</h6>
-								<p>${account.balance}&#8364</p>
-								<div class="form-group">
-									<label for="amount">Montant :</label> <input
-										class="form-control" id="amount" name="amount">
-								</div>
-								<div class="retour-button">
-									<button class="btn btn-success">Valider</button>
-								</div>
-							</c:if>
-						</div>
-					</div>
-				</c:forEach>
-			</c:if>
+			<form method="post" action="">
+		<div class="form-group">
+			<label for="amount">Montant : </label>
+			<input class="form-control" id="amount" name="amount" value="">
+		</div>
+		<button class="btn btn-success">Valider</button>
+	</form>
 			<div class="retour-button">
 				<a href="dashboard.html">
 					<button class="button">Retour</button>
