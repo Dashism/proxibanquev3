@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import fr.formation.proxi.metier.ClientService;
 import fr.formation.proxi.metier.entity.Account;
 import fr.formation.proxi.metier.entity.Client;
-import fr.formation.proxi.metier.service.AccountService;
 
 /**
  * la class IndexrServlet hérite de la class HttpServlet
