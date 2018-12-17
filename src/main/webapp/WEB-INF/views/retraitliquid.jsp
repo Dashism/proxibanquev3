@@ -52,7 +52,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ml-auto">
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#team">Erreur</a></li>
+						href="#modif">Virement</a></li>
 				</ul>
 			</div>
 		</div>
@@ -69,22 +69,48 @@
 		</div>
 	</header>
 
-
-	<section class="bg-light" id="team">
+	<section class="bg-light" id="modif">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-uppercase">Veuillez vous
-						adresser à un conseiller</h2>
-					<div class="retour-button">
-						<a href="index.html">
-							<button class="button">Retour</button>
-						</a>
-					</div>
+					<h2 class="section-heading text-uppercase">Retrait de liquide</h2>
+					<h3 class="section-subheading text-muted">Veuillez choisir le
+						montant à débiter</h3>
 				</div>
+			</div>
+			<c:if test="${accounts.size()!=0}">
+				<c:forEach var="account" items="${accounts}">
+					<div class="col-sm-4">
+						<div class="account">
+							<c:if test="${account.savings == 'false'}">
+								<h4>Compte courant</h4>
+								<img src="./img/compte_courant.jpg" style="width: 50%;">
+								<h6>Numéro de compte : ${account.number}</h6>
+
+								<h6>Solde du compte</h6>
+								<p>${account.balance}&#8364</p>
+								<div class="form-group">
+									<label for="amount">Montant :</label> <input
+										class="form-control" id="amount" name="amount">
+								</div>
+								<div class="retour-button">
+									<button class="btn btn-success">Valider</button>
+								</div>
+							</c:if>
+						</div>
+					</div>
+				</c:forEach>
+			</c:if>
+			<div class="retour-button">
+				<a href="dashboard.html">
+					<button class="button">Retour</button>
+				</a>
 			</div>
 		</div>
 	</section>
+
+
+
 
 	<!-- Footer -->
 	<footer>
@@ -115,7 +141,6 @@
 			</div>
 		</div>
 	</footer>
-
 
 
 	<!-- Bootstrap core JavaScript -->

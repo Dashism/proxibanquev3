@@ -52,7 +52,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ml-auto">
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#team">Erreur</a></li>
+						href="#modif">Virement</a></li>
 				</ul>
 			</div>
 		</div>
@@ -69,22 +69,74 @@
 		</div>
 	</header>
 
-
-	<section class="bg-light" id="team">
+	<section class="bg-light" id="modif">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-uppercase">Veuillez vous
-						adresser à un conseiller</h2>
-					<div class="retour-button">
-						<a href="index.html">
-							<button class="button">Retour</button>
-						</a>
-					</div>
+					<h2 class="section-heading text-uppercase">Virement</h2>
+					<h3 class="section-subheading text-muted">Veuillez choisr les
+						comptes à débiter et à créditer, ainsi que le montant du virement</h3>
 				</div>
+			</div>
+			<c:if test="${accounts.size()<2}">
+				<div>
+					<p>Vous n'avez pas assez de comptes pour faire un virement
+						compte à compte.</p>
+				</div>
+			</c:if>
+			<c:if test="${accounts.size()>=2}">
+				<form method="post" action="">
+					<div class="form-group">
+						<label for="account1">Compte à débiter :</label> <select
+							class="form-control" id="account1" name="account1">
+							<option label="----" value="">
+								<c:forEach var="account" items="${accounts}">
+									<option
+										label="${account.number}    solde :${account.balance} &#8364"
+										value="${account.id}" />
+								</c:forEach>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="account2">Compte à créditer :</label> <select
+							class="form-control" id="account2" name="account2">
+							<option label="----" value="">
+								<c:forEach var="account" items="${accounts}">
+									<option
+										label="${account.number}  solde :${account.balance} &#8364"
+										value="${account.id}" />
+								</c:forEach>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="amount">Montant :</label> <input class="form-control"
+							id="amount" name="amount">
+					</div>
+
+					<button class="btn btn-success">Valider</button>
+				</form>
+			</c:if>
+			<c:if test="${result == 'true'}">
+				<div class="col-sm-4">
+					<p>Virement effectué !</p>
+				</div>
+			</c:if>
+			<c:if test="${result == 'false'}">
+				<div class="col-sm-4">
+					<p>Virement non effectué.</p>
+				</div>
+			</c:if>
+			<div class="retour-button">
+				<a href="dashboard.html">
+					<button class="button">Retour</button>
+				</a>
 			</div>
 		</div>
 	</section>
+
+
+
 
 	<!-- Footer -->
 	<footer>
@@ -115,7 +167,6 @@
 			</div>
 		</div>
 	</footer>
-
 
 
 	<!-- Bootstrap core JavaScript -->
