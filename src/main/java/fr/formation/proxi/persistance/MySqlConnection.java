@@ -1,8 +1,10 @@
 package fr.formation.proxi.persistance;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import fr.formation.proxi.persistance.MySqlConnection;
 
 /**
  * la class MySqlConnection de créer une seule et unique connexion à notre base de donnée 
@@ -14,39 +16,45 @@ import java.sql.SQLException;
 
 public class MySqlConnection {
 
-private static final MySqlConnection INSTANCE = new MySqlConnection();
-	
+	/**
+	 * Déclaration d'un singleton (instance unique) privé.
+	 */
+	private static final MySqlConnection INSTANCE = new MySqlConnection();
+
+	/**
+	 * @return MysqlConnection l'instance unique (singleton) de connexion BDD.
+	 */
 	public static MySqlConnection getInstance() {
 		return MySqlConnection.INSTANCE;
 	}
 
-	private Connection conn;
-	
+	/**
+	 * Il est nécessaire de mémoriser quelque part l'instance unique de
+	 * EntityManagerFactory.
+	 */
+	private EntityManagerFactory entityManagerFactory;
 	
 	/**
-	 * le constructeur MySqlConnection charge le driver à l'aide de la méthode forname() 
-	 * etrenvoie une connexion à l'aide de la méthode getconnection
+	 * Instance unique pour l'entity manager pour ne pas avoir de problème de refresh avec les données.
 	 */
-	
+	private EntityManager entityManager;
+
+	/**
+	 * Constructeur par défaut. Récupère l'instance d'EntityManagerFactory
+	 * associée à notre unité de persistence 'blog' définie dans
+	 * persistence.xml.
+	 */
 	public MySqlConnection() {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proxibanquev2?serverTimezone=Europe/Paris", "root", "root");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		this.entityManagerFactory = Persistence
+				.createEntityManagerFactory("proxibanquev2");
+		this.entityManager = this.entityManagerFactory.createEntityManager();
 	}
-	
+
 	/**
-	 * la méthode getConn() permet d'établir la connexion.
-	 * @return Connection
+	 * @return EntityManager une instance capable d'effectuer les opérations
+	 *         CRUD sur la base de données.
 	 */
-	
-	public Connection getConn() {
-		return conn;
+	public EntityManager getEntityManager() {
+		return this.entityManager;
 	}
-	
-	
 }

@@ -1,5 +1,6 @@
 package fr.formation.proxi.persistance;
 
+import java.util.List;
 
 /**
  * Définition d'une interface comportant les 4 méthodes élémentaires de
@@ -9,31 +10,43 @@ package fr.formation.proxi.persistance;
  */
 public interface Dao<T> {
 	
-	
 	/**
-	 * Lit les informations d'une entité en base de données.
+	 * Crée une nouvelle entité en base de données.
 	 * 
-	 * @param id l'identifiant unique de l'entité.
-	 * @return T l'entité construite à partir des informations récupérées.
+	 * @param entity l'entité à créer.
+	 * @return T l'entité avec son identifiant rempli.
+	 */
+	public T create(T entity);
+
+	/**
+	 * Lit les informations d'une entite de BDD
+	 * 
+	 * @param id l'identifiant d'une entite en base de donnees
+	 * @return T l'entit� construite � partir des informations recuperees
+	 * 
 	 */
 	public T read(Integer id);
-	
-	
+
 	/**
-	 * Met à jour l'entité donnée dans la base de données.
+	 * Recupere toutes les entit�s (lignes) d'une table
 	 * 
-	 * @param entity l'entité à mettre à jour avec ses nouvelles informations.
-	 * @return T l'entité mise à jour.
+	 * @return List<T> la liste de toutes les entites lues.
+	 */
+	public List<T> readAll();
+
+	/**
+	 * met � jour l'entite donne dans la BDD
+	 * 
+	 * @param entity l'entite � mettre a jour avec les nouvelles informations
+	 * @return l'entite mise � jour
 	 */
 	public T update(T entity);
 	
 	/**
 	 * Supprime définitivement une entité de la base de données.
 	 * 
-	 * @param id l'identifiant unique de l'entité à supprimer.
+	 * @param id l'identifiant unique de l'entité.
 	 * @return boolean vrai si la suppression est un succès, sinon faux.
 	 */
 	public boolean delete(Integer id);
-
-
 }

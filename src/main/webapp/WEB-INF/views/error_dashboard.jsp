@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +41,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#modif">S'identifier</a>
+              <a class="nav-link js-scroll-trigger" href="#team">Erreur</a>
             </li>
           </ul>
         </div>
@@ -52,27 +52,20 @@
     <header class="masthead">
       <div class="container">
         <div class="intro-text">
-          <div class="intro-lead-in">Bienvenue sur le systÃ¨me d'information</div>
+          <div class="intro-lead-in">Bienvenue sur le système d'information</div>
           <div class="intro-heading text-uppercase">PROXIBANQUE</div>
         </div>
       </div>
     </header>
-    
-    <section class="bg-light" id="modif">
+
+   
+    <section class="bg-light" id="team">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Identifiez vous pour commencer</h2>
-            <h3 class="section-subheading text-muted">Remplissez le champ puis valider </h3>
+            <h2 class="section-heading text-uppercase">Veuillez vous adresser à un conseiller</h2>
           </div>
         </div>
-    <form method="post" action="">
-		<div class="form-group">
-			<label for="lastname">Nom et Prenom : </label>
-			<input class="form-control" id="lastname" name="lastname" value="">
-		</div>
-		<button class="btn btn-success">Valider</button>
-	</form>
 	</div>
 	</section>
 
@@ -116,7 +109,8 @@
       </div>
     </footer>
 
-    
+   
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
