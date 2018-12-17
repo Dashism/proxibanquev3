@@ -79,13 +79,13 @@
 						action</h3>
 				</div>
 			</div>
-			<h4>${client.firstname}${client.lastname}</h4>
+			<h4>${client.firstname} ${client.lastname}</h4>
 			<div class="row">
 				<c:if test="${accounts.size()!=0}">
 					<c:forEach var="account" items="${accounts}">
 						<div class="col-sm-4">
 							<div class="account">
-								<c:if test="${account.savings == 'false'}">
+								<c:if test="${account instanceof CurrentAccount}">
 									<h4>Compte courant</h4>
 									<img src="./img/compte_courant.jpg" style="width: 50%;">
 									<h6>Numéro de compte : ${account.number}</h6>
@@ -109,7 +109,7 @@
 									</div>
 								</c:if>
 
-								<c:if test="${account.savings == 'true'}">
+								<c:if test="${account instanceof SavingsAccount}">
 									<h4>Compte épargne</h4>
 									<img src="./img/epargne.jpg" style="width: 50%;">
 									<h6>Numéro de compte : ${account.number}</h6>
