@@ -27,14 +27,14 @@ public class ClientService {
 	/**
 	 * Permet de faire appel aux m�thodes de la classe ClientDao.
 	 */
-	private final ClientDao dao;
+	private final ClientDao daoClient;
 	/**
 	 * Permet de faire appel aux m�thodes de la classe AccountDao.
 	 */
 //	private final AccountDao daoAcc;
 
 	public ClientService() {
-		this.dao = new ClientDao();
+		this.daoClient = new ClientDao();
 //		this.daoAcc = new AccountDao();
 	}
 	
@@ -54,7 +54,7 @@ public class ClientService {
 	 * @return Renvoie la liste de tous les clients.
 	 */
 	public List<Client> getAll() {
-		return this.dao.readAll();
+		return this.daoClient.readAll();
 	}
 	
 	/**
@@ -63,7 +63,7 @@ public class ClientService {
 	 * @return Renvoie le client voulu.
 	 */
 	public Client getClient(Integer id) {
-		return this.dao.read(id);
+		return this.daoClient.read(id);
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class ClientService {
 	public void updateClient(Integer id, String number, String firstname, String lastname, String birthdate, Address address,
 			List<Account> accounts) {
 		Client client = new Client(id, number, firstname, lastname, birthdate, address, accounts);
-		this.dao.update(client);
+		this.daoClient.update(client);
 	}
 	
 	/**
@@ -91,7 +91,7 @@ public class ClientService {
 //		this.dao.delete(id);
 //	}
 	
-	public Client getAdvisorIdByName(String firstname, String lastname) {
-		return this.dao.readIdByName(firstname, lastname);
+	public Client getIdByName(String firstname, String lastname) {
+		return this.daoClient.readIdByName(firstname, lastname);
 	}
 }
