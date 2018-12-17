@@ -90,8 +90,8 @@ public class ClientService {
 //		}
 //		this.dao.delete(id);
 //	}
-
-	public Cl getAdvisorIdByName(String firstname, String lastname) {
-		return this.dao.readIdByName(client);
+	
+	public Client getAdvisorIdByName(String firstname, String lastname) {
+		return this.dao.readIdByName(firstname, lastname);
 	}
 }
