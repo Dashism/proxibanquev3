@@ -12,6 +12,11 @@ public class AccountDao extends AbstractDao<Account> {
 		return null;
 	}
 
+	public List<Account> readAll(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Override
 	public List<Account> readAll() {
 		// TODO Auto-generated method stub
