@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.formation.proxi.metier.ClientService;
+import fr.formation.proxi.metier.entity.Account;
 import fr.formation.proxi.metier.entity.Client;
+import fr.formation.proxi.metier.service.AccountService;
 
 /**
  * la class IndexrServlet hérite de la class HttpServlet
@@ -34,7 +36,6 @@ public class IndexServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		List<Client> clients = ClientService.getInstance().getAll();
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/index.jsp").forward(req, resp);
 	}
 	
@@ -47,6 +48,13 @@ public class IndexServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Client client = ClientService.getInstance().;
+		req.setAttribute("currentAccounts",currentAccounts);
+		req.setAttribute("savingAccounts",savingAccounts);
+		req.setAttribute("id",id);
+		req.setAttribute("client",client);
+		logger.info("Comptes du client " + client.getLastname() + " " + client.getFirstname() + " charg�s");
+		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(req, resp);
 	}
 }

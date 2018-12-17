@@ -21,4 +21,5 @@ public class JpqlQueries {
 	public static final String DELETE_ACCOUNTS = "DELETE FROM Account WHERE id_client=%s;";
 	public static final String DELETE_CLIENT = "DELETE FROM Client WHERE id=%s;";
 	public static final String READ_ACCOUNT = "SELECT * FROM account where id= %s;";
+	public static final String SELECT_CLIENT_BY_NAME = "SELECT c FROM Client c WHERE c.firstname = :firstname and c.lastname = :lastname";
 }
