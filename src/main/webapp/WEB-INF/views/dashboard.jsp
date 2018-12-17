@@ -128,7 +128,7 @@
 						<div class="col-sm-4">
 							<div class="currentAccounts">
 								<h4>Compte épargne</h4>
-								<img src="./img/compte_courant.jpg" style="width: 50%;">
+								<img src="./img/epargne.jpg" style="width: 50%;">
 								<h6>Numéro de compte : ${savingsAccount.number}</h6>
 								<h6>Solde du compte</h6>
 								<p>${savingsAccount.balance}&#8364</p>
