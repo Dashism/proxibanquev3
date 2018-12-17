@@ -47,12 +47,6 @@ public class IndexServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Client client = ClientService.getInstance().;
-		req.setAttribute("currentAccounts",currentAccounts);
-		req.setAttribute("savingAccounts",savingAccounts);
-		req.setAttribute("id",id);
-		req.setAttribute("client",client);
-		logger.info("Comptes du client " + client.getLastname() + " " + client.getFirstname() + " charg�s");
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(req, resp);
 	}
