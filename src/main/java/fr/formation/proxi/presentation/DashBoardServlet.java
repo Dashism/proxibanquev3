@@ -1,11 +1,15 @@
 package fr.formation.proxi.presentation;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import fr.formation.proxi.metier.entity.Account;
+import fr.formation.proxi.metier.entity.Client;
 
 /**
  * la class IndexrServlet hérite de la class HttpServlet
@@ -30,6 +34,9 @@ public class DashBoardServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Client client = (Client) req.getSession().getAttribute("client");
+		List<Account> accounts = client.getAccounts();
+		req.setAttribute("accounts", accounts);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(req, resp);
 	}
 	
