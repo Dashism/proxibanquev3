@@ -34,7 +34,7 @@ public class IndexServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Client> clients = ClientService.getInstance().getAll();
+//		List<Client> clients = ClientService.getInstance().getAll();
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/index.jsp").forward(req, resp);
 	}
 	
