@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import fr.formation.proxi.persistance.MySqlConnection;
 
 /**
  * la class MySqlConnection de créer une seule et unique connexion à notre base de donnée 
@@ -37,7 +36,7 @@ public class MySqlConnection {
 	/**
 	 * Instance unique pour l'entity manager pour ne pas avoir de problème de refresh avec les données.
 	 */
-	private EntityManager entityManager;
+//	private EntityManager entityManager;
 
 	/**
 	 * Constructeur par défaut. Récupère l'instance d'EntityManagerFactory
@@ -46,15 +45,19 @@ public class MySqlConnection {
 	 */
 	public MySqlConnection() {
 		this.entityManagerFactory = Persistence
-				.createEntityManagerFactory("proxibanquev2");
-		this.entityManager = this.entityManagerFactory.createEntityManager();
+				.createEntityManagerFactory("proxibanquev3");
+//		this.entityManager = this.entityManagerFactory.createEntityManager();
 	}
 
+	public EntityManager getEntityManager() {
+		return this.entityManagerFactory.createEntityManager();
+	}
+	
 	/**
 	 * @return EntityManager une instance capable d'effectuer les opérations
 	 *         CRUD sur la base de données.
 	 */
-	public EntityManager getEntityManager() {
-		return this.entityManager;
-	}
+//	public EntityManager getEntityManager() {
+//		return this.entityManager;
+//	}
 }

@@ -57,7 +57,7 @@ public class Client {
 	 */
 	@OneToOne
 	@JoinColumn(name="address_id", referencedColumnName="id")
-	private String address;
+	private Address address;
 
 	/**
 	 * Liste des comptes du client.
@@ -70,7 +70,7 @@ public class Client {
 		this.accounts = new ArrayList<>();
 	}
 
-	public Client(Integer id, String number, String firstname, String lastname, String birthdate, String address,
+	public Client(Integer id, String number, String firstname, String lastname, String birthdate, Address address,
 			List<Account> accounts) {
 		this.id = id;
 		this.number = number;
@@ -121,11 +121,11 @@ public class Client {
 		this.birthdate = birthdate;
 	}
 
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 
