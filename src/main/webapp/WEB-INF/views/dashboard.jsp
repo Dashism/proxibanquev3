@@ -79,8 +79,8 @@
 				</div>
 			</div>
 			<h2>Welcome ${client.firstname} ${client.lastname}</h2>
-			<div class="virement-button">
-				<a href="virement.html">
+			<div class="transfer-button">
+				<a href="transfer.html">
 					<button class="button">Faire un virement</button>
 				</a> <a href="index.html">
 					<button class="button">Retour</button>
@@ -96,13 +96,13 @@
 								<h6>Numéro de compte : ${currentAccount.number}</h6>
 								<h6>Solde du compte</h6>
 								<p>${currentAccount.balance}&#8364</p>
-								<div class="retraitliquid-button">
-									<a href="retraitliquid.html?id=${currentAccount.id}">
+								<div class="cashWithdrawal-button">
+									<a href="cashWithdrawal.html?id=${currentAccount.id}">
 										<button class="button">Retrait liquide</button>
 									</a>
 								</div>
-								<div class="retraitCB-button">
-									<a href="retraitCB.html?id=${currentAccount.id}">
+								<div class="newCard-button">
+									<a href="newCard.html?id=${currentAccount.id}">
 										<button class="button">Retrait CB</button>
 									</a>
 								</div>

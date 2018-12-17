@@ -17,7 +17,7 @@ import fr.formation.proxi.metier.ClientService;
  *
  */
 
-public class VirementServlet extends HttpServlet {
+public class TransferServlet extends HttpServlet {
 
 	
 	private static final long serialVersionUID = 1L;
@@ -31,6 +31,6 @@ public class VirementServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/virement.jsp").forward(req, resp);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/transfer.jsp").forward(req, resp);
 	}
 }

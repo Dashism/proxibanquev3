@@ -36,33 +36,33 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>VirementServlet</servlet-name>
-		<servlet-class>fr.formation.proxi.presentation.VirementServlet</servlet-class>
+		<servlet-name>TransferServlet</servlet-name>
+		<servlet-class>fr.formation.proxi.presentation.TransferServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>VirementServlet</servlet-name>
-		<url-pattern>/virement.html</url-pattern>
+		<servlet-name>TransferServlet</servlet-name>
+		<url-pattern>/transfer.html</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>RetraitLiquidServlet</servlet-name>
-		<servlet-class>fr.formation.proxi.presentation.RetraitLiquidServlet</servlet-class>
+		<servlet-name>CashWithdrawalServlet</servlet-name>
+		<servlet-class>fr.formation.proxi.presentation.CashWithdrawalServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>RetraitLiquidServlet</servlet-name>
-		<url-pattern>/retraitliquid.html</url-pattern>
+		<servlet-name>CashWithdrawalServlet</servlet-name>
+		<url-pattern>/cashWithdrawal.html</url-pattern>
 	</servlet-mapping>
 	
 		<servlet>
-		<servlet-name>RetraitCBServlet</servlet-name>
-		<servlet-class>fr.formation.proxi.presentation.RetraitCBServlet</servlet-class>
+		<servlet-name>NewCardServlet</servlet-name>
+		<servlet-class>fr.formation.proxi.presentation.NewCardServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>RetraitCBServlet</servlet-name>
-		<url-pattern>/retraitCB.html</url-pattern>
+		<servlet-name>NewCardServlet</servlet-name>
+		<url-pattern>/newCard.html</url-pattern>
 	</servlet-mapping>
 
 	<error-page>

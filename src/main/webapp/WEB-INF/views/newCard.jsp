@@ -83,10 +83,8 @@
 				<div class="form-group">
 					<label for="account1">Type de carte banquaire :</label> <select
 						class="form-control" id="card1" name="card1">
-						<option label="----" value="">
-							<c:forEach var="account" items="${cards}">
-								<option label="${cards.type}" value="${card.id}" />
-							</c:forEach>
+						<option label="Visa Electron" value="electron">
+						<option label="Visa Premier" value="premier">
 					</select>
 				</div>
 			</form>
