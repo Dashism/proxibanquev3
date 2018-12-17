@@ -1,10 +1,15 @@
 package fr.formation.proxi.presentation;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import fr.formation.proxi.metier.ClientService;
+import fr.formation.proxi.metier.entity.Client;
 
 /**
  * la class IndexrServlet hérite de la class HttpServlet
@@ -29,6 +34,7 @@ public class IndexServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		List<Client> clients = ClientService.getInstance().getAll();
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/index.jsp").forward(req, resp);
 	}
 	
