@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.formation.proxi.metier.ClientService;
+
 /**
  * la class IndexrServlet hérite de la class HttpServlet
  * elle utilise les méthode doGet()
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 
-public class IndexServlet extends HttpServlet {
+public class DashBoardServlet extends HttpServlet {
 
 	/**
 	 * 
@@ -30,7 +32,7 @@ public class IndexServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/index.jsp").forward(req, resp);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(req, resp);
 	}
 	
 	/**

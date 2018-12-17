@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +41,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#modif">S'identifier</a>
+              <a class="nav-link js-scroll-trigger" href="#team">Tableau de bord</a>
             </li>
           </ul>
         </div>
@@ -57,25 +57,59 @@
         </div>
       </div>
     </header>
-    
-    <section class="bg-light" id="modif">
+
+   
+    <section class="bg-light" id="team">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Identifiez vous pour commencer</h2>
-            <h3 class="section-subheading text-muted">Remplissez le champ puis valider </h3>
+            <h2 class="section-heading text-uppercase">Tableau de bord</h2>
+            <h3 class="section-subheading text-muted">Sélectionner une action</h3>
           </div>
         </div>
-    <form method="post" action="">
-		<div class="form-group">
-			<label for="lastname">Nom et Prenom : </label>
-			<input class="form-control" id="lastname" name="lastname" value="">
+    <div class="row" >
+		<c:if test="${accounts.size()!=0}">
+		<c:forEach var="account" items="${accounts}">
+			<div class="col-sm-4">
+			<div class="account" >
+			<c:if test="${account.savings == 'false'}">
+			<h4>Compte courant</h4>
+			<img src="./img/compte_courant.jpg" style="width: 50%;">
+			<h6>Numéro de compte : ${account.number}</h6>
+          
+              <h6>Solde du compte</h6>
+              <p>${account.balance} &#8364</p>
+              </c:if>
+              
+              <c:if test="${account.savings == 'true'}">
+              <h4>Compte epargne</h4>
+              <img src="./img/epargne.jpg" style="width: 50%;">
+			<h6>Numéro de compte : ${account.number}</h6>
+          
+              <h6>Solde du compte</h6>
+              <p>${account.balance} &#8364</p>
+              </c:if>
+			</div>
+			</div>
+		</c:forEach>
+		</c:if>
+		<c:if  test="${accounts.size()==0}">
+		<div class="col-sm-4">
+		<p>Aucun compte pour ce client.</p>
 		</div>
-		<button class="btn btn-success">Valider</button>
-<!-- 		<a href="index.html"><button class="btn">Recommencer</button></a> -->
-	</form>
+		</c:if>
+		<div class="col-sm-4">
+		<a href="createaccount.html?id=${client.id}"><h6>Créer un nouveau compte</h6></a><br>
+		<a href="transfer.html?id=${client.id}"><h6>Faire un virement</h6></a>
+		</div>
+	</div>
+	<br>
+	<a href="index.html">Revenir au menu précédent</a>
 	</div>
 	</section>
+
+
+    
 
     <!-- Footer -->
     <footer>
@@ -117,7 +151,8 @@
       </div>
     </footer>
 
-    
+   
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
