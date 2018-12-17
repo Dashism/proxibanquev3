@@ -74,7 +74,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-uppercase">Virement</h2>
-					<h3 class="section-subheading text-muted">Veuillez choisr les
+					<h3 class="section-subheading text-muted">Veuillez choisir les
 						comptes à débiter et à créditer, ainsi que le montant du virement</h3>
 				</div>
 			</div>

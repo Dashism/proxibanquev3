@@ -40,11 +40,8 @@ buildNumber.properties
 .settings/
 .classpath
 .project
-<<<<<<< HEAD
-build/
-=======
 build/
 
 # Librairies
 *.jar
->>>>>>> ba47dcf9923e8cad72bdecc575d72e6573e38b68
+
