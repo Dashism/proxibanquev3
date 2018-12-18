@@ -11,16 +11,10 @@ package fr.formation.proxi.persistance;
 
 public class JpqlQueries {
 
-	public static final String READ_ALL_CLIENT = "SELECT * FROM client;";
-	public static final String READ_CLIENT = "SELECT * FROM client WHERE id=%s;";
-	public static final String READ_ALL_ACCOUNT = "SELECT * FROM account where id_client = %s;";
-	public static final String UPDATE_CLIENT = "UPDATE client SET %s = '%s' WHERE id=%s;";
-	public static final String UPDATE_ACCOUNT = "UPDATE account SET balance=%s WHERE id=%s;";
-	public static final String CREATE_CLIENT = "INSERT INTO client VALUES (null, '%s', '%s', '%s', '%s');";
-	public static final String CREATE_ACCOUNT = "INSERT INTO account VALUES (null, '%s', %s, %s, %s);";
-	public static final String DELETE_ACCOUNTS = "DELETE FROM Account WHERE id_client=%s;";
-	public static final String DELETE_CLIENT = "DELETE FROM Client WHERE id=%s;";
-	public static final String READ_ACCOUNT = "SELECT * FROM account where id= %s;";
 	public static final String SELECT_CLIENT_BY_NAME = "SELECT c FROM Client c WHERE c.firstname = :firstname and c.lastname = :lastname";
 	public static final String SELECT_ALL_CARD = "SELECT c FROM Card c";
+	public static final String SELECT_ALL_CLIENT= "SELECT c FROM Client c";
+	public static final String SELECT_ALL_ACCOUNT = "SELECT c FROM Account c";
+	public static final String SELECT_ALL_ACCOUNT_FROM_CLIENT = "SELECT c FROM Account c WHERE c.client_id = :client_id";
+	public static final String SELECT_ALL_CHEQUEBOOK = "SELECT c FROM Chequebook c";
 }

@@ -22,11 +22,11 @@ public class BankCardDao extends AbstractDao<BankCard> {
 
 	@Override
 	public List<BankCard> readAll() {
-		List<BankCard> accounts = new ArrayList<>();
+		List<BankCard> cards = new ArrayList<>();
 		TypedQuery<BankCard> query = this.em
 				.createQuery(JpqlQueries.SELECT_ALL_CARD, BankCard.class);
-		accounts.addAll(query.getResultList());
-		return accounts;
+		cards.addAll(query.getResultList());
+		return cards;
 	}
 
 }

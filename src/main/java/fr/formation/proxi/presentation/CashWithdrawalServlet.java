@@ -42,17 +42,23 @@ public class CashWithdrawalServlet extends HttpServlet {
 		Integer id = Integer.parseInt(strId);
 		String strAmount = req.getParameter("amount");
 		if (strAmount.equals("")) {
-			req.setAttribute("errorEmpty", "Veuillez remplir le formulaire.");
+			req.setAttribute("error", "Veuillez remplir le formulaire.");
 			this.doGet(req, resp);
 		} else {
 			Float amount = Float.parseFloat(strAmount);
 			if (amount >= 300) {
-				req.setAttribute("errorTooHigh", "Montant trop élevé.");
+				req.setAttribute("error", "Montant trop élevé.");
 				this.doGet(req, resp);
 			} else {
+				System.out.println("L'identifiant du compte est " + id);
 				AccountService service = AccountService.getInstance();
-				service.cashWithdrawal(id, amount);
-				resp.sendRedirect(this.getServletContext().getContextPath() + "/dashboard.html");
+				Boolean result = service.cashWithdrawal(id, amount);
+				if (result) {
+					resp.sendRedirect(this.getServletContext().getContextPath() + "/dashboard.html");
+				} else {
+					req.setAttribute("error", "Echec du retrait.");
+					this.doGet(req, resp);
+				}
 			}
 		}
 	}
