@@ -11,11 +11,8 @@ import fr.formation.proxi.metier.ClientService;
 import fr.formation.proxi.metier.entity.Client;
 
 /**
- * la class IndexrServlet hérite de la class HttpServlet elle utilise les
- * méthode doGet()
- * 
- * @author Marie_Julien
- *
+ * la class IndexServlet hérite de la class HttpServlet, elle utilise les
+ * méthodes doGet() et doPost().
  */
 
 public class IndexServlet extends HttpServlet {
@@ -26,8 +23,7 @@ public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * La méthode doGet() de la classe IndexServlet permet à l'utilisateur
-	 * d'afficher dans lea jsp les informations sur les clients de la table client.
+	 * Méthode permettant d'accéder à index.jsp.
 	 * 
 	 * @param HttpServletRequest req, HttpServletResponse resp
 	 */
@@ -38,8 +34,9 @@ public class IndexServlet extends HttpServlet {
 	}
 
 	/**
-	 * la méthode doPost() de la class EditServlet permet à l'utilisateur d'envoyer
-	 * les informations nécessaires à la modification du client à modifier.
+	 * À partir des informations rentrées par l'utilisateur, renvoie vers
+	 * dashboard.html si le client existe, ou vers error_dashboard.jsp s'il n'y
+	 * aucun client ou deux clients à ce nom.
 	 * 
 	 * @param HttpServletRequest req, HttpServletResponse resp
 	 */
@@ -63,14 +60,15 @@ public class IndexServlet extends HttpServlet {
 			if (client == null) {
 				client = ClientService.getInstance().getIdByName(lastname, firstname);
 				if (client == null) {
-					this.getServletContext().getRequestDispatcher("/WEB-INF/views/error_dashboard.jsp").forward(req, resp);
+					this.getServletContext().getRequestDispatcher("/WEB-INF/views/error_dashboard.jsp").forward(req,
+							resp);
 				} else {
 					req.getSession().setAttribute("client", client);
 					resp.sendRedirect(this.getServletContext().getContextPath() + "/dashboard.html");
 				}
 			} else {
 				req.getSession().setAttribute("client", client);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(req, resp);
+				resp.sendRedirect(this.getServletContext().getContextPath() + "/dashboard.html");
 			}
 
 		} else {

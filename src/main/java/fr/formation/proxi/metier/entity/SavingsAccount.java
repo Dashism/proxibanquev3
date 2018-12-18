@@ -4,7 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /**
- * Representation d'un compte épargne qui hérite de la classe Account, i.e. compte.
+ * Representation d'un compte épargne qui hérite de la classe Account.
  */
 @Entity
 @DiscriminatorValue("SAVINGS")

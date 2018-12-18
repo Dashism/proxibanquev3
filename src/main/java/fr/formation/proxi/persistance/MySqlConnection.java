@@ -4,13 +4,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
 /**
- * la class MySqlConnection de créer une seule et unique connexion à notre base de donnée 
- * via l'utilisation du Singleton INSTANCE
- * 
- * @author Marie_Julien
- *
+ * la class MySqlConnection permet de créer une seule et unique connexion à
+ * notre base de donnée via l'utilisation du Singleton INSTANCE.
  */
 
 public class MySqlConnection {
@@ -34,24 +30,23 @@ public class MySqlConnection {
 	private EntityManagerFactory entityManagerFactory;
 
 	/**
-	 * Instance unique pour l'entity manager pour ne pas avoir de problème de refresh avec les données.
+	 * Instance unique pour l'entity manager pour ne pas avoir de problème de
+	 * refresh avec les données.
 	 */
 	private EntityManager entityManager;
 
 	/**
-	 * Constructeur par défaut. Récupère l'instance d'EntityManagerFactory
-	 * associée à notre unité de persistence 'blog' définie dans
-	 * persistence.xml.
+	 * Constructeur par défaut. Récupère l'instance d'EntityManagerFactory associée
+	 * à notre unité de persistence 'proxibanquev3' définie dans persistence.xml.
 	 */
 	public MySqlConnection() {
-		this.entityManagerFactory = Persistence
-				.createEntityManagerFactory("proxibanquev3");
+		this.entityManagerFactory = Persistence.createEntityManagerFactory("proxibanquev3");
 		this.entityManager = this.entityManagerFactory.createEntityManager();
 	}
-	
+
 	/**
-	 * @return EntityManager une instance capable d'effectuer les opérations
-	 *         CRUD sur la base de données.
+	 * @return EntityManager une instance capable d'effectuer les opérations CRUD
+	 *         sur la base de données.
 	 */
 	public EntityManager getEntityManager() {
 		return this.entityManager;

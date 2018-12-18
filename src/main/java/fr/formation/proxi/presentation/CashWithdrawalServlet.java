@@ -10,11 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import fr.formation.proxi.metier.AccountService;
 
 /**
- * la class AccountlistServlet hérite de la class HttpServlet elle utilise les
- * méthodes doGet() et doPost()
- * 
- * @author Marie_Julien
- *
+ * la class CashWithdrawalServlet hérite de la class HttpServlet, elle utilise les
+ * méthodes doGet() et doPost().
  */
 
 public class CashWithdrawalServlet extends HttpServlet {
@@ -22,10 +19,7 @@ public class CashWithdrawalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * La méthode doGet() de la classe AccountListServlet permet à l'utilisateur
-	 * d'afficher dans le jsp les informations sur les compte d'un client choisit
-	 * avec son id
-	 * 
+	 * Méthode permettant d'accéder à cashWithdrawal.jsp.
 	 * @param HttpServletRequest req, HttpServletResponse resp
 	 */
 
@@ -34,6 +28,10 @@ public class CashWithdrawalServlet extends HttpServlet {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/cashWithdrawal.jsp").forward(req, resp);
 	}
 	
+	/**
+	 * Méthode renvoyant vers dashboard.html si le retrait a été effectué, ou
+	 * bouclant sur cashWithdrawal.jsp si le montant saisi est trop important.
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String strId = req.getParameter("id");
@@ -53,7 +51,7 @@ public class CashWithdrawalServlet extends HttpServlet {
 				if (result) {
 					resp.sendRedirect(this.getServletContext().getContextPath() + "/dashboard.html");
 				} else {
-					req.setAttribute("error", "Echec du retrait.");
+					req.setAttribute("error", "Echec du retrait, solde insuffisant.");
 					this.doGet(req, resp);
 				}
 			}

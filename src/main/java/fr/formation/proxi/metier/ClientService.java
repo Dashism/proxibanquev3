@@ -9,9 +9,7 @@ import fr.formation.proxi.metier.entity.Client;
 import fr.formation.proxi.persistance.ClientDao;
 
 /**
- * La classe ClientService d�finit toutes les m�thodes de manipulation des clients.
- * @author Marie_Julien
- *
+ * La classe ClientService définit toutes les méthodes de manipulation des clients.
  */
 public class ClientService {
 	
@@ -25,54 +23,40 @@ public class ClientService {
 	}
 	
 	/**
-	 * Permet de faire appel aux m�thodes de la classe ClientDao.
+	 * Permet de faire appel aux méthodes de la classe ClientDao.
 	 */
 	private final ClientDao daoClient;
-	/**
-	 * Permet de faire appel aux m�thodes de la classe AccountDao.
-	 */
-//	private final AccountDao daoAcc;
-
+	
 	public ClientService() {
 		this.daoClient = new ClientDao();
-//		this.daoAcc = new AccountDao();
 	}
 	
-	/**
-	 * Ajoute un client � la base de donn�es.
-	 * @param firstname Le pr�nom du client.
-	 * @param lastname Le nom de famille du client.
-	 * @param email L'adresse mail du client.
-	 * @param address L'adresse physique du client.
-	 */
-//	public void addClient(String firstname, String lastname, String email, String address) {
-//		this.dao.create(new Client(firstname, lastname, email, address));
-//	}
 	
 	/**
-	 * R�cup�re tous les clients de la base de donn�es
-	 * @return Renvoie la liste de tous les clients.
+	 * Récupère tous les clients de la base de données.
+	 * @return List<Client> Renvoie la liste de tous les clients.
 	 */
 	public List<Client> getAll() {
 		return this.daoClient.readAll();
 	}
 	
 	/**
-	 * R�cup�re les informations d'un client sp�cifique.
+	 * Récupère les informations d'un client spécifique.
 	 * @param id L'identifiant du client voulu.
-	 * @return Renvoie le client voulu.
+	 * @return Client Renvoie le client voulu.
 	 */
 	public Client getClient(Integer id) {
 		return this.daoClient.read(id);
 	}
 	
 	/**
-	 * Met � jour les informations d'un client sp�cifique.
-	 * @param firstname Le nouveau pr�nom.
+	 * Met à jour les informations d'un client spécifique.
+	 * @param firstname Le nouveau prénom.
 	 * @param lastname Le nouveau nom de famille.
-	 * @param email La nouvelle adresse mail.
+	 * @param number Le nouveau numéro de client.
 	 * @param address La nouvelle adresse physique.
-	 * @param id L'identifiant du client � modifier.
+	 * @param birthdate La nouvelle date de naissance.
+	 * @param id L'identifiant du client à modifier.
 	 */
 	public void updateClient(Integer id, String number, String firstname, String lastname, String birthdate, Address address,
 			List<Account> accounts) {
@@ -81,16 +65,11 @@ public class ClientService {
 	}
 	
 	/**
-	 * Supprime un client sp�cifique.
-	 * @param id L'identifiant du client � supprimer.
+	 * Récupère un client à partir de son nom et prénom.
+	 * @param firstname Le prénom du client.
+	 * @param lastname Le nom du client.
+	 * @return Client le client voulu.
 	 */
-//	public void deleteClient(Integer id) {
-//		if (AccountService.getInstance().getAll(id).size()!=0) {
-//			this.daoAcc.delete(id);
-//		}
-//		this.dao.delete(id);
-//	}
-	
 	public Client getIdByName(String firstname, String lastname) {
 		return this.daoClient.readIdByName(firstname, lastname);
 	}

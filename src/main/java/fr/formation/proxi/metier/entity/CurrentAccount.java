@@ -6,7 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 /**
- * Representation d'un compte courant qui hérite de la classe Account, i.e. compte.
+ * Representation d'un compte courant qui hérite de la classe Account.
  */
 @Entity
 @DiscriminatorValue("CURRENT")

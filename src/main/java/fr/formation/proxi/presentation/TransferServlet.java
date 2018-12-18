@@ -17,24 +17,21 @@ import fr.formation.proxi.metier.entity.CurrentAccount;
 import fr.formation.proxi.metier.entity.SavingsAccount;
 
 /**
- * la class AccountlistServlet hérite de la class HttpServlet
- * elle utilise les méthodes doGet() et doPost() 
- * @author Marie_Julien
- *
+ * la class TransferServlet hérite de la class HttpServlet, elle utilise les
+ * méthodes doGet() et doPost().
  */
 
 public class TransferServlet extends HttpServlet {
 
-	
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
-	 * La méthode doGet() de la classe AccountListServlet permet à l'utilisateur d'afficher dans le jsp 
-	 * les informations sur les compte d'un client choisit avec son id
+	 * Méthode permettant d'accéder à transfer.jsp avec en attribut la liste des
+	 * comptes du client en session.
 	 * 
 	 * @param HttpServletRequest req, HttpServletResponse resp
 	 */
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Client client = (Client) req.getSession().getAttribute("client");
@@ -42,12 +39,16 @@ public class TransferServlet extends HttpServlet {
 		req.setAttribute("accounts", accounts);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/transfer.jsp").forward(req, resp);
 	}
-	
+
+	/**
+	 * Méthode renvoyant vers dashboard.html si le virement a été effectué, ou
+	 * bouclant sur transfer.jsp si le montant saisi est trop important.
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String strAmount = req.getParameter("amount");
-		Integer compteADebiter = Integer.parseInt(req.getParameter("account1")); 
-		Integer compteACrediter = Integer.parseInt(req.getParameter("account2")); 
+		Integer compteADebiter = Integer.parseInt(req.getParameter("account1"));
+		Integer compteACrediter = Integer.parseInt(req.getParameter("account2"));
 		if (strAmount.equals("")) {
 			req.setAttribute("errorEmpty", "Veuillez remplir le formulaire.");
 			this.doGet(req, resp);
@@ -58,8 +59,13 @@ public class TransferServlet extends HttpServlet {
 				this.doGet(req, resp);
 			} else {
 				AccountService service = AccountService.getInstance();
-				service.transfer(compteADebiter, compteACrediter, amount);
-				resp.sendRedirect(this.getServletContext().getContextPath() + "/dashboard.html");
+				Boolean result = service.transfer(compteADebiter, compteACrediter, amount);
+				if (result) {
+					resp.sendRedirect(this.getServletContext().getContextPath() + "/dashboard.html");
+				} else {
+					req.setAttribute("errorTooHigh", "Echec du virement, solde insuffisant.");
+					this.doGet(req, resp);
+				}
 			}
 		}
 	}

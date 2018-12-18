@@ -22,23 +22,23 @@ public interface Dao<T> {
 	 * Lit les informations d'une entite de BDD
 	 * 
 	 * @param id l'identifiant d'une entite en base de donnees
-	 * @return T l'entit� construite � partir des informations recuperees
+	 * @return T l'entité construite à partir des informations recuperees
 	 * 
 	 */
 	public T read(Integer id);
 
 	/**
-	 * Recupere toutes les entit�s (lignes) d'une table
+	 * Recupere toutes les entités (lignes) d'une table
 	 * 
 	 * @return List<T> la liste de toutes les entites lues.
 	 */
 	public List<T> readAll();
 
 	/**
-	 * met � jour l'entite donne dans la BDD
+	 * met à jour l'entite donne dans la BDD
 	 * 
-	 * @param entity l'entite � mettre a jour avec les nouvelles informations
-	 * @return l'entite mise � jour
+	 * @param entity l'entite à mettre a jour avec les nouvelles informations
+	 * @return l'entite mise à jour
 	 */
 	public T update(T entity);
 	

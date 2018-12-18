@@ -14,10 +14,7 @@ import fr.formation.proxi.persistance.ChequebookDao;
 
 /**
  * la classe AccountService definit toutes les méthodes de manipulation des
- * comptes
- * 
- * @author Marie_Julien
- *
+ * comptes.
  */
 
 public class AccountService {
@@ -32,10 +29,18 @@ public class AccountService {
 	}
 
 	/**
-	 * Permet de faire appel aux m�thodes de la classe AccountDao.
+	 * Permet de faire appel aux méthodes de la classe AccountDao.
 	 */
 	private final AccountDao accountDao;
+
+	/**
+	 * Permet de faire appel aux méthodes de la classe BankCardDao.
+	 */
 	private final BankCardDao cardDao;
+
+	/**
+	 * Permet de faire appel aux méthodes de la classe ChequebookDao.
+	 */
 	private final ChequebookDao chequebookDao;
 
 	public AccountService() {
@@ -45,36 +50,24 @@ public class AccountService {
 	}
 
 	/**
-	 * Ajoute un compte � un client d�fini
-	 * 
-	 * @param number  Le num�ro de compte du compte � cr�er.
-	 * @param balance Le solde du compte � cr�er.
-	 * @param savings Si vrai, le compte � cr�er est un compte �pargne, si faux le
-	 *                compte � cr�er est un compte courant.
-	 * @param id      L'identifiant du client auquel le compte est rattach�.
-	 */
-//	public void addAccount(Integer id, String number, Float balance, String label, String openingDate, Chequebook chequebook) {
-//		this.dao.create(new Account(number, balance, savings), id);
-//	}
-//	
-	/**
-	 * R�cup�re la liste des comptes d'un client d�fini.
+	 * Récupère la liste de tous les comptes associés à un client.
 	 * 
 	 * @param id L'identifiant du client dont il faut afficher les comptes
-	 * @return Renvoie la liste des comptes.
+	 * @return List<Account> Renvoie la liste des comptes.
 	 */
 	public List<Account> getAll(Integer id) {
 		return this.accountDao.readAll(id);
 	}
 
 	/**
-	 * Fait un virement du compte A au compte B d'un montant choisi, si le solde du
-	 * compte A est suffisant et les comptes A et B sont diff�rents.
+	 * Fait un virement du compte A au compte B d'un montant choisi inférieur à
+	 * 900€, si le solde du compte A est suffisant et les comptes A et B sont
+	 * différents.
 	 * 
-	 * @param compteA L'identifiant du compte � d�biter.
-	 * @param compteB L'identifiant du compte � cr�diter.
-	 * @param montant Le montant � virer
-	 * @return Renvoie true si le virement a r�ussi, false s'il a �chou�.
+	 * @param compteA L'identifiant du compte à débiter.
+	 * @param compteB L'identifiant du compte à créditer.
+	 * @param montant Le montant à virer
+	 * @return Renvoie true si le virement a réussi, false s'il a échoué.
 	 */
 	public boolean transfer(Integer compteA, Integer compteB, Float montant) {
 		Account accountA = this.accountDao.read(compteA);
@@ -93,7 +86,7 @@ public class AccountService {
 		}
 		return result;
 	}
-	
+
 	public boolean cashWithdrawal(Integer accountId, Float amount) {
 		Account account = this.accountDao.read(accountId);
 		Boolean result = false;
@@ -104,15 +97,23 @@ public class AccountService {
 		}
 		return result;
 	}
-	
-	public boolean newCard (Integer accountId, String type) {
+
+	/**
+	 * Crée une nouvelle carte bancaire si il n'y en a pas déjà, ou si l'actuelle
+	 * est périmée.
+	 * 
+	 * @param accountId l'identifiant du compte auquel on va ajouté une carte.
+	 * @param type      le type de carte bancaire à créer.
+	 * @return boolean Vrai si la carte a été créée, faux sinon.
+	 */
+	public boolean newCard(Integer accountId, String type) {
 		boolean resultOk = true;
 		CurrentAccount account = (CurrentAccount) this.accountDao.read(accountId);
 		if (account.getCard() != null) {
 			if (account.getCard().getExpirationDate().isBefore(LocalDate.now())) {
 				Integer cardId = account.getCard().getId();
 				account.setCard(null);
-				this.accountDao.update(account);				
+				this.accountDao.update(account);
 				this.cardDao.delete(cardId);
 			} else {
 				resultOk = false;
@@ -128,22 +129,34 @@ public class AccountService {
 		}
 		return resultOk;
 	}
-	
-	public Status newChequebook (Integer accountId) {
+
+	/**
+	 * Crée un nouveau chéquier s'il n'y en a pas déjà, ou si l'actuel a été envoyé
+	 * il y a plus de trois mois.
+	 * 
+	 * @param accountId l'identifiant du compte auquel on va ajouté un compte.
+	 * @return Status un objet de la classe Status contenant le booléen de la
+	 *         réussite (ou non) de la création de chéquier et le message à afficher
+	 *         à l'utilisateur.
+	 */
+	public Status newChequebook(Integer accountId) {
 		Status status = new Status();
 		boolean resultOk = true;
 		Account account = this.accountDao.read(accountId);
 		if (account.getChequebook() != null) {
 			if (account.getChequebook().getReceptionDate().isBefore(LocalDate.now().minusMonths(3))) {
 				Integer chequebookId = account.getChequebook().getId();
-				account.setChequebook(null);;
+				account.setChequebook(null);
+				;
 				this.accountDao.update(account);
 				this.chequebookDao.delete(chequebookId);
-				status.setMessage("Nouveau chéquier valable jusqu'au " + (LocalDate.now().plusMonths(3).plusWeeks(2)) + " en cours de distribution...");
+				status.setMessage("Nouveau chéquier valable jusqu'au " + (LocalDate.now().plusMonths(3).plusWeeks(2))
+						+ " en cours de distribution...");
 			} else {
 				resultOk = false;
 				status.setValid(resultOk);
-				status.setMessage("Impossible d'effectuer le retrait d'un nouveau chéquier pour ce compte avant le " + (account.getChequebook().getReceptionDate().plusMonths(3)));
+				status.setMessage("Impossible d'effectuer le retrait d'un nouveau chéquier pour ce compte avant le "
+						+ (account.getChequebook().getReceptionDate().plusMonths(3)));
 			}
 		} else {
 			status.setMessage("Premier chéquier pour ce compte en cours de distribution...");
@@ -153,7 +166,8 @@ public class AccountService {
 			newChequebook.setSendDate(LocalDate.now());
 			newChequebook.setReceptionDate(LocalDate.now().plusDays(14));
 			newChequebook = this.chequebookDao.create(newChequebook);
-			account.setChequebook(newChequebook);;
+			account.setChequebook(newChequebook);
+			;
 			this.accountDao.update(account);
 		}
 		status.setValid(resultOk);
