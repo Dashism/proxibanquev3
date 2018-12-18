@@ -30,7 +30,7 @@ Chaque carte bleue possède un identifiant, une date d’expiration et son numé
 Le chéquier est caractérisé par un identifiant, une date d’envoi et une date de réception.
 
 Pour tester l'application voici des exemples de noms de client present dans la base de donné :
--Harry Potter
+- Harry Potter
 - Tony Stark
 - Diana Price
 - Martha Hudson

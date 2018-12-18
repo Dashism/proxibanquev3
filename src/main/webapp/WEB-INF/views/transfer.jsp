@@ -123,14 +123,13 @@
 					</div>
 				</form>
 			</c:if>
-			<c:if test="${result == 'true'}">
-				<div class="col-sm-4">
-					<p>Virement effectué !</p>
-				</div>
-			</c:if>
-			<c:if test="${result == 'false'}">
-				<div class="col-sm-4">
-					<p>Virement non effectué.</p>
+			<c:if test="${accounts.size()<2}">
+				<h4 class="section-subheading text-muted">Vous n'avez pas assez
+					de comptes pour effectuer un virement !</h4>
+				<div class="retour-button">
+					<a href="dashboard.html">
+						<button class="button" type="button">Retour</button>
+					</a>
 				</div>
 			</c:if>
 		</div>
