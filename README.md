@@ -15,7 +15,7 @@ Pour avoir accès aux données client, veuillez télécharger l'application MySQ
 
 
 2 - Exécution. Afin de deployer l'application ProxiBanque, veuillez coller l'archive proxibanquev3_Benoit_Marie.war dans le dossier webapps de votre dossier apache-tomcat-8.5.35. Ensuite, allez dans le dossier bin et double cliquez sur le fichier "startup.bat". Attendre qu'un dossier proxibanquev3 apparaisse.
-Veuillez ensuite lancer MySQL Workbench et créer un nouveau schéma nommé "proxibanquev3". Ensuite, selectionner "Server" dans le menu supérieur puis "Data import". Selectionner l'option "Import from Self-Contained File et renseigner le chemin vers le fichier structure.sql fourni. indiquer "proxibanquev3" dans "Default Target Schema". Enfin, répéter l'opération précédente avec le script "data.sql" fourni afin d'importer les données proprement dites.
+Veuillez ensuite lancer MySQL Workbench et créer un nouveau schéma nommé "proxibanquev3". Ensuite, selectionner "Server" dans le menu supérieur puis "Data import". Selectionner l'option "Import from Self-Contained File et renseigner le chemin vers le fichier structure.sql fourni. Indiquer "proxibanquev3" dans "Default Target Schema". Enfin, répéter l'opération précédente avec le script "data.sql" fourni afin d'importer les données proprement dites.
 
 Pour lancer l'application, lancer chrome et rentrer l'adresse suivante : "http://localhost:8080/proxibanquev3".
 
@@ -28,6 +28,12 @@ Les comptes clients sont de type compte courant et/ou compte épargne, et possè
 L’adresse du client est composé de : pays, ville, code  postal, et deux lignes d’adresse principale et secondaire (bâtiment, étage, etc... ).  
 Chaque carte bleue possède un identifiant, une date d’expiration et son numéro sur 16 chiffres en  plus de son type.  
 Le chéquier est caractérisé par un identifiant, une date d’envoi et une date de réception.
+
+Pour tester l'application voici des exemples de noms de client present dans la base de donné :
+-Harry Potter
+- Tony Stark
+- Diana Price
+- Martha Hudson
 
 Une fois que votre usage de l'application touche à son terme, lancez le fichier "shutdown.bat" dans le même dossier que "startup.bat"(Apache Tomcat/bin).
 
