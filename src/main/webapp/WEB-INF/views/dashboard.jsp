@@ -110,7 +110,7 @@
 									<div class="retraitchequier-button">
 										<div id="result"></div>
 										<a href="retraitchequier.html?id=${currentAccount.id}">
-											<button class="button">Retrait Chéquier</button>
+											<button class="button" onclick="chequebook()">Retrait Chéquier</button>
 										</a>
 									</div>
 								</form>
@@ -136,7 +136,7 @@
 								<div class="retraitchequier-button">
 									<div id="result"></div>
 									<a href="retraitchequier.html?id=${currentAccount.id}">
-										<button class="button">Retrait Chéquier</button>
+										<button class="button" onclick="chequebook()">Retrait Chéquier</button>
 									</a>
 								</div>
 							</div>
