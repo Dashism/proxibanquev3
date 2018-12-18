@@ -111,6 +111,7 @@ public class AccountService {
 			if (account.getCard().getExpirationDate().isBefore(LocalDate.now())) {
 				account.setCard(null);
 				this.accountDao.update(account);				
+				this.cardDao.delete(account.getCard().getId());
 			} else {
 				resultOk = false;
 			}

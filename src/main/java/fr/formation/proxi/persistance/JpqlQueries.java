@@ -22,4 +22,5 @@ public class JpqlQueries {
 	public static final String DELETE_CLIENT = "DELETE FROM Client WHERE id=%s;";
 	public static final String READ_ACCOUNT = "SELECT * FROM account where id= %s;";
 	public static final String SELECT_CLIENT_BY_NAME = "SELECT c FROM Client c WHERE c.firstname = :firstname and c.lastname = :lastname";
+	public static final String SELECT_ALL_CARD = "SELECT c FROM Card c";
 }

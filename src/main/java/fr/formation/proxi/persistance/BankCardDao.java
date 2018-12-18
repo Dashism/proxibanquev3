@@ -1,21 +1,32 @@
 package fr.formation.proxi.persistance;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.TypedQuery;
 
 import fr.formation.proxi.metier.entity.BankCard;
 
 public class BankCardDao extends AbstractDao<BankCard> {
+	
+	private static final BankCardDao INSTANCE = new BankCardDao();
+
+	public static BankCardDao getInstance() {
+		return BankCardDao.INSTANCE;
+	}
 
 	@Override
 	public BankCard read(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.read(id, new BankCard());
 	}
 
 	@Override
 	public List<BankCard> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<BankCard> accounts = new ArrayList<>();
+		TypedQuery<BankCard> query = this.em
+				.createQuery(JpqlQueries.SELECT_ALL_CARD, BankCard.class);
+		accounts.addAll(query.getResultList());
+		return accounts;
 	}
 
 }

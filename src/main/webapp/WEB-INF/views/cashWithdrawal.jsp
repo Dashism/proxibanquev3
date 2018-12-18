@@ -79,22 +79,19 @@
 				</div>
 			</div>
 			<form method="post" action="">
-		<div class="form-group">
-			<label for="amount">Montant : </label>
-			<input class="form-control" id="amount" name="amount" value="">
-		</div>
-		<button class="btn btn-success">Valider</button>
-	</form>
-			<div class="retour-button">
-				<a href="dashboard.html">
-					<button class="button">Retour</button>
-				</a>
-			</div>
+				<div class="form-group">
+					<label for="amount">Montant : </label> <input class="form-control"
+						id="amount" name="amount" value="">
+				</div>
+				<div class="retour-button">
+					<button class="btn btn-success">Valider</button>
+					<a href="dashboard.html">
+						<button class="button">Retour</button>
+					</a>
+				</div>
+			</form>
 		</div>
 	</section>
-
-
-
 
 	<!-- Footer -->
 	<footer>
