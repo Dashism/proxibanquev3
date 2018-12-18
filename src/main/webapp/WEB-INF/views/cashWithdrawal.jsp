@@ -83,7 +83,7 @@
 			<label for="amount">Montant : </label>
 			<input class="form-control" id="amount" name="amount" type="number" step=0.01>
 		</div>
-		<div>${errorEmpty}${errorTooHigh}</div>
+		<div>${error}</div>
 		
 	
 			<div class="retour-button">

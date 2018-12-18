@@ -1,5 +1,6 @@
 package fr.formation.proxi.persistance;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -17,8 +18,11 @@ public class ClientDao extends AbstractDao<Client> {
 	
 	@Override
 	public List<Client> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Client> clients = new ArrayList<>();
+		TypedQuery<Client> query = this.em
+				.createQuery(JpqlQueries.SELECT_ALL_CLIENT, Client.class);
+		clients.addAll(query.getResultList());
+		return clients;
 	}
 
 	public Client readIdByName(String firstname, String lastname) {
