@@ -51,11 +51,7 @@ public class DashBoardServlet extends HttpServlet {
 			}
 		}
 		req.setAttribute("currentAccounts", currentAccounts);
-		System.out.println(currentAccounts);
-		System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
 		req.setAttribute("savingsAccounts", savingsAccounts);
-		System.out.println(savingsAccounts);
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/dashboard.jsp").forward(req, resp);
 	}
 	

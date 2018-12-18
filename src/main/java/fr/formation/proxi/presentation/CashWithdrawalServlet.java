@@ -31,8 +31,6 @@ public class CashWithdrawalServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		req.setAttribute("errorEmpty", "");
-//		req.setAttribute("errorTooHigh", "");
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/cashWithdrawal.jsp").forward(req, resp);
 	}
 	
@@ -50,7 +48,6 @@ public class CashWithdrawalServlet extends HttpServlet {
 				req.setAttribute("error", "Montant trop élevé.");
 				this.doGet(req, resp);
 			} else {
-				System.out.println("L'identifiant du compte est " + id);
 				AccountService service = AccountService.getInstance();
 				Boolean result = service.cashWithdrawal(id, amount);
 				if (result) {

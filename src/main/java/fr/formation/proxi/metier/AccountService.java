@@ -95,19 +95,11 @@ public class AccountService {
 	
 	public boolean cashWithdrawal(Integer accountId, Float amount) {
 		Account account = this.accountDao.read(accountId);
-		System.out.println(account);
 		Boolean result = false;
-		if (account instanceof CurrentAccount) {
-			System.out.println("Le compte est un compte courant.");
-			if (amount <= 300) {
-				System.out.println("Le montant est inférieur à 300€.");
-				if (account.getBalance() >= amount) {
-					System.out.println("Le solde du compte est suffisant.");
-					account.setBalance(account.getBalance() - amount);
-					this.accountDao.update(account);
-					result = true;
-				}
-			}
+		if ((account instanceof CurrentAccount) && (amount <= 300) && (account.getBalance() >= amount)) {
+			account.setBalance(account.getBalance() - amount);
+			this.accountDao.update(account);
+			result = true;
 		}
 		return result;
 	}

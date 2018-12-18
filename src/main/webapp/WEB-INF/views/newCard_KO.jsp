@@ -74,10 +74,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-uppercase">Veuillez vous
-						adresser à un conseiller.</h2>
+					<h2 class="section-heading text-uppercase">Impossible
+						d’effectuer le retrait, votre ancienne carte est encore valide.</h2>
 					<div class="retour-button">
-						<a href="index.html">
+						<a href="dashboard.html">
 							<button class="button">Retour</button>
 						</a>
 					</div>
