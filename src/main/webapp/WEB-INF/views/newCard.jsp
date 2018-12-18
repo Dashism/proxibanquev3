@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +62,7 @@
 	<header class="masthead">
 		<div class="container">
 			<div class="intro-text">
-				<div class="intro-lead-in">Bienvenue sur le système
+				<div class="intro-lead-in">Bienvenue sur le systÃ¨me
 					d'information</div>
 				<div class="intro-heading text-uppercase">PROXIBANQUE</div>
 			</div>
@@ -92,7 +92,7 @@
 			<div class="retour-button">
 				<button class="btn btn-success">Valider</button>
 				<a href="dashboard.html">
-					<button class="button">Retour</button>
+					<button class="button" type="button">Retour</button>
 				</a>
 			</div>
 		</div>

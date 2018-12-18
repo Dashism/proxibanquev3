@@ -83,7 +83,7 @@
 				<a href="transfer.html">
 					<button class="button">Faire un virement</button>
 				</a> <a href="index.html">
-					<button class="button">Retour</button>
+					<button class="button" type="button">Retour</button>
 				</a>
 			</div>
 			<div class="row">
@@ -108,6 +108,7 @@
 								</div>
 								<form method="post" action="">
 									<div class="retraitchequier-button">
+										<div>${errorEmpty}${errorTooHigh}</div>
 										<a href="retraitchequier.html?id=${currentAccount.id}">
 											<button class="button">Retrait Chéquier</button>
 										</a>
@@ -133,6 +134,7 @@
 								<h6>Solde du compte</h6>
 								<p>${savingsAccount.balance}&#8364</p>
 								<div class="retraitchequier-button">
+									<div>${errorEmpty}${errorTooHigh}</div>
 									<a href="retraitchequier.html?id=${currentAccount.id}">
 										<button class="button">Retrait Chéquier</button>
 									</a>

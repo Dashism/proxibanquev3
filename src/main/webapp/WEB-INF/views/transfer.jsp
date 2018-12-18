@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +62,7 @@
 	<header class="masthead">
 		<div class="container">
 			<div class="intro-text">
-				<div class="intro-lead-in">Bienvenue sur le système
+				<div class="intro-lead-in">Bienvenue sur le systÃ¨me
 					d'information</div>
 				<div class="intro-heading text-uppercase">PROXIBANQUE</div>
 			</div>
@@ -75,20 +75,20 @@
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-uppercase">Virement</h2>
 					<h3 class="section-subheading text-muted">Veuillez choisir les
-						comptes à débiter et à créditer, ainsi que le montant du virement</h3>
+						comptes Ã  dÃ©biter et Ã  crÃ©diter, ainsi que le montant du virement</h3>
 				</div>
 			</div>
 			<h2>Identifiant : ${client.firstname} ${client.lastname}</h2>
 			<c:if test="${savingsAccounts.size()<2}">
 				<div>
 					<p>Vous n'avez pas assez de comptes pour faire un virement
-						compte à compte.</p>
+						compte Ã  compte.</p>
 				</div>
 			</c:if>
 			<c:if test="${accounts.size()>=2}">
 				<form method="post" action="">
 					<div class="form-group">
-						<label for="account1">Compte à débiter :</label> <select
+						<label for="account1">Compte Ã  dÃ©biter :</label> <select
 							class="form-control" id="account1" name="account1">
 							<option label="----" value="">
 								<c:forEach var="account" items="${accounts}">
@@ -100,7 +100,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="account2">Compte à créditer :</label> <select
+						<label for="account2">Compte Ã  crÃ©diter :</label> <select
 							class="form-control" id="account2" name="account2">
 							<option label="----" value="">
 								<c:forEach var="account" items="${accounts}">
@@ -118,19 +118,19 @@
 					<div class="retour-button">
 						<button class="btn btn-success">Valider</button>
 						<a href="dashboard.html">
-							<button class="button">Retour</button>
+							<button class="button" type="button">Retour</button>
 						</a>
 					</div>
 				</form>
 			</c:if>
 			<c:if test="${result == 'true'}">
 				<div class="col-sm-4">
-					<p>Virement effectué !</p>
+					<p>Virement effectuÃ© !</p>
 				</div>
 			</c:if>
 			<c:if test="${result == 'false'}">
 				<div class="col-sm-4">
-					<p>Virement non effectué.</p>
+					<p>Virement non effectuÃ©.</p>
 				</div>
 			</c:if>
 		</div>
