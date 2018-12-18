@@ -84,19 +84,18 @@
 			<input class="form-control" id="amount" name="amount" type="number" step=0.01>
 		</div>
 		<div>${errorEmpty}${errorTooHigh}</div>
-		<button class="btn btn-success">Valider</button>
-	</form>
-	<script src="js/cashWithdrawal.js"></script>
+		
+	
 			<div class="retour-button">
+			<button class="btn btn-success">Valider</button>
 				<a href="dashboard.html">
 					<button class="button">Retour</button>
 				</a>
 			</div>
+		</form>
+
 		</div>
 	</section>
-
-
-
 
 	<!-- Footer -->
 	<footer>
