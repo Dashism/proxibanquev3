@@ -108,13 +108,12 @@
 								</div>
 								<form method="post" action="">
 									<div class="retraitchequier-button">
-										<div id="result"></div>
-										<a href="retraitchequier.html?id=${currentAccount.id}">
-											<button class="button" onclick="chequebook()">Retrait Chéquier</button>
-										</a>
+										<div id="result-${currentAccount.id}"></div>
+<%-- 										<a href="retraitchequier.html?id=${currentAccount.id}"> --%>
+											<button class="button" id="button-${currentAccount.id}" onclick="chequebook(event)">Retrait Chéquier</button>
+<!-- 										</a> -->
 									</div>
 								</form>
-								<script src="js/form.js"></script>
 							</div>
 						</div>
 					</c:forEach>
@@ -134,10 +133,10 @@
 								<h6>Solde du compte</h6>
 								<p>${savingsAccount.balance}&#8364</p>
 								<div class="retraitchequier-button">
-									<div id="result"></div>
-									<a href="retraitchequier.html?id=${currentAccount.id}">
-										<button class="button" onclick="chequebook()">Retrait Chéquier</button>
-									</a>
+									<div id="result-${savingsAccount.id}"></div>
+<%-- 									<a href="retraitchequier.html?id=${savingsAccount.id}"> --%>
+										<button class="button" id="button-${savingsAccount.id}" onclick="chequebook(event)">Retrait Chéquier</button>
+<!-- 									</a> -->
 								</div>
 							</div>
 						</div>
@@ -197,6 +196,6 @@
 
 	<!-- Custom scripts for this template -->
 	<script src="js/agency.min.js"></script>
-	<script src="js/chequier.js"></script>
+	<script src="js/chequebook.js"></script>
 </body>
 </html>

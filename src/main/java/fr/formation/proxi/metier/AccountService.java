@@ -7,6 +7,7 @@ import fr.formation.proxi.metier.entity.Account;
 import fr.formation.proxi.metier.entity.BankCard;
 import fr.formation.proxi.metier.entity.Chequebook;
 import fr.formation.proxi.metier.entity.CurrentAccount;
+import fr.formation.proxi.metier.entity.Status;
 import fr.formation.proxi.persistance.AccountDao;
 import fr.formation.proxi.persistance.BankCardDao;
 import fr.formation.proxi.persistance.ChequebookDao;
@@ -128,16 +129,24 @@ public class AccountService {
 		return resultOk;
 	}
 	
-	public boolean newChequebook (Integer accountId) {
+	public Status newChequebook (Integer accountId) {
+		Status status = new Status();
 		boolean resultOk = true;
 		Account account = this.accountDao.read(accountId);
 		if (account.getChequebook() != null) {
 			if (account.getChequebook().getReceptionDate().isBefore(LocalDate.now().minusMonths(3))) {
+				Integer chequebookId = account.getChequebook().getId();
 				account.setChequebook(null);;
-				this.accountDao.update(account);				
+				this.accountDao.update(account);
+				this.chequebookDao.delete(chequebookId);
+				status.setMessage("Nouveau chéquier valable jusqu'au " + (LocalDate.now().plusMonths(3)) + " en cours de distribution...");
 			} else {
 				resultOk = false;
+				status.setValid(resultOk);
+				status.setMessage("Impossible d'effectuer le retrait d'un nouveau chéquier pour ce compte avant le " + (account.getChequebook().getReceptionDate().plusMonths(3)));
 			}
+		} else {
+			status.setMessage("Premier chéquier pour ce compte en cours de distribution...");
 		}
 		if (resultOk) {
 			Chequebook newChequebook = new Chequebook();
@@ -147,7 +156,8 @@ public class AccountService {
 			account.setChequebook(newChequebook);;
 			this.accountDao.update(account);
 		}
-		return resultOk;
+		status.setValid(resultOk);
+		return status;
 	}
 
 }
