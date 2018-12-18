@@ -78,7 +78,7 @@
 						action</h3>
 				</div>
 			</div>
-			<h2>Welcome ${client.firstname} ${client.lastname}</h2>
+			<h2>Identifiant : ${client.firstname} ${client.lastname}</h2>
 			<div class="transfer-button">
 				<a href="transfer.html">
 					<button class="button">Faire un virement</button>

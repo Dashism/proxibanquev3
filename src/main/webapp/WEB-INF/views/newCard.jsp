@@ -78,6 +78,7 @@
 					<h3 class="section-subheading text-muted">Veuillez choisir le
 						type de carte bleue</h3>
 				</div>
+				<h2>Identifiant : ${client.firstname} ${client.lastname}</h2>
 			</div>
 			<form method="post" action="">
 				<div class="form-group">

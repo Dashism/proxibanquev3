@@ -78,7 +78,7 @@
 						comptes à débiter et à créditer, ainsi que le montant du virement</h3>
 				</div>
 			</div>
-			<h2>Welcome ${client.firstname} ${client.lastname}</h2>
+			<h2>Identifiant : ${client.firstname} ${client.lastname}</h2>
 			<c:if test="${savingsAccounts.size()<2}">
 				<div>
 					<p>Vous n'avez pas assez de comptes pour faire un virement

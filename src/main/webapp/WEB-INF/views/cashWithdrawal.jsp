@@ -77,22 +77,23 @@
 					<h3 class="section-subheading text-muted">Veuillez choisir le
 						montant à débiter</h3>
 				</div>
+				<h2>Identifiant : ${client.firstname} ${client.lastname}</h2>
 			</div>
 			<form method="post" action="">
-		<div class="form-group">
-			<label for="amount">Montant : </label>
-			<input class="form-control" id="amount" name="amount" type="number" step=0.01>
-		</div>
-		<div>${error}</div>
-		
-	
-			<div class="retour-button">
-			<button class="btn btn-success">Valider</button>
-				<a href="dashboard.html">
-					<button class="button">Retour</button>
-				</a>
-			</div>
-		</form>
+				<div class="form-group">
+					<label for="amount">Montant : </label> <input class="form-control"
+						id="amount" name="amount" type="number" step=0.01>
+				</div>
+				<div>${error}</div>
+
+
+				<div class="retour-button">
+					<button class="btn btn-success">Valider</button>
+					<a href="dashboard.html">
+						<button class="button">Retour</button>
+					</a>
+				</div>
+			</form>
 
 		</div>
 	</section>
