@@ -78,7 +78,8 @@
 						comptes à débiter et à créditer, ainsi que le montant du virement</h3>
 				</div>
 			</div>
-			<c:if test="${accounts.size()<2}">
+			<h2>Welcome ${client.firstname} ${client.lastname}</h2>
+			<c:if test="${savingsAccounts.size()<2}">
 				<div>
 					<p>Vous n'avez pas assez de comptes pour faire un virement
 						compte à compte.</p>
@@ -113,8 +114,13 @@
 						<label for="amount">Montant :</label> <input class="form-control"
 							id="amount" name="amount" type="number" step=0.01>
 					</div>
-
-					<button class="btn btn-success">Valider</button>
+					<div>${errorEmpty}${errorTooHigh}</div>
+					<div class="retour-button">
+						<button class="btn btn-success">Valider</button>
+						<a href="dashboard.html">
+							<button class="button">Retour</button>
+						</a>
+					</div>
 				</form>
 			</c:if>
 			<c:if test="${result == 'true'}">
@@ -127,11 +133,6 @@
 					<p>Virement non effectué.</p>
 				</div>
 			</c:if>
-			<div class="retour-button">
-				<a href="dashboard.html">
-					<button class="button">Retour</button>
-				</a>
-			</div>
 		</div>
 	</section>
 

@@ -106,7 +106,7 @@
 										<button class="button">Retrait CB</button>
 									</a>
 								</div>
-								<form method="post" action="" onsubmit="validateChequier(event)">
+								<form method="post" action="">
 									<div class="retraitchequier-button">
 										<a href="retraitchequier.html?id=${currentAccount.id}">
 											<button class="button">Retrait Chéquier</button>
