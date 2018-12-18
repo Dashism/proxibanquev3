@@ -90,7 +90,7 @@
 				<div class="retour-button">
 					<button class="btn btn-success">Valider</button>
 					<a href="dashboard.html">
-						<button class="button">Retour</button>
+						<button class="button" type="button">Retour</button>
 					</a>
 				</div>
 			</form>
