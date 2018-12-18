@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.formation.proxi.metier.AccountService;
 import fr.formation.proxi.metier.entity.Account;
 import fr.formation.proxi.metier.entity.Client;
 import fr.formation.proxi.metier.entity.CurrentAccount;
@@ -65,12 +66,13 @@ public class DashBoardServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		Integer id = Integer.parseInt(req.getParameter("id"));
-//		String lastname = req.getParameter("lastname");
-//		String firstname = req.getParameter("firstname");
-//		String email = req.getParameter("email");
-//		String address = req.getParameter("address");
-//		ClientService service = ClientService.getInstance();
-//		service.updateClient(firstname, lastname, email, address, id);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/views/index.jsp").forward(req, resp);
+//		Boolean result = AccountService.getInstance().newChequebook(id);
+//		if (result) {
+//			req.setAttribute("errorEmpty", "Veuillez remplir le formulaire.");
+//			this.doGet(req, resp);
+//		} else {
+//			req.setAttribute("errorTooHigh", "Veuillez remplir le formulaire.");
+//			this.doGet(req, resp);
+//		}
 	}
 }

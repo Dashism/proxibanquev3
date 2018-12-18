@@ -108,7 +108,7 @@
 								</div>
 								<form method="post" action="">
 									<div class="retraitchequier-button">
-										<div>${errorEmpty}${errorTooHigh}</div>
+										<div id="result"></div>
 										<a href="retraitchequier.html?id=${currentAccount.id}">
 											<button class="button">Retrait Chéquier</button>
 										</a>
@@ -134,7 +134,7 @@
 								<h6>Solde du compte</h6>
 								<p>${savingsAccount.balance}&#8364</p>
 								<div class="retraitchequier-button">
-									<div>${errorEmpty}${errorTooHigh}</div>
+									<div id="result"></div>
 									<a href="retraitchequier.html?id=${currentAccount.id}">
 										<button class="button">Retrait Chéquier</button>
 									</a>
