@@ -88,13 +88,14 @@
 						<option label="Visa Premier" value="premier">
 					</select>
 				</div>
-			</form>
+			
 			<div class="retour-button">
 				<button class="btn btn-success">Valider</button>
 				<a href="dashboard.html">
 					<button class="button" type="button">Retour</button>
 				</a>
 			</div>
+			</form>
 		</div>
 	</section>
 

@@ -109,9 +109,10 @@ public class AccountService {
 		CurrentAccount account = (CurrentAccount) this.accountDao.read(accountId);
 		if (account.getCard() != null) {
 			if (account.getCard().getExpirationDate().isBefore(LocalDate.now())) {
+				Integer cardId = account.getCard().getId();
 				account.setCard(null);
 				this.accountDao.update(account);				
-				this.cardDao.delete(account.getCard().getId());
+				this.cardDao.delete(cardId);
 			} else {
 				resultOk = false;
 			}
