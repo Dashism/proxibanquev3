@@ -5,7 +5,6 @@ import java.util.List;
 import fr.formation.proxi.metier.entity.Account;
 import fr.formation.proxi.metier.entity.Address;
 import fr.formation.proxi.metier.entity.Client;
-//import fr.formation.proxi.persistance.AccountDao;
 import fr.formation.proxi.persistance.ClientDao;
 
 /**

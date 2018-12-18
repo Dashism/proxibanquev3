@@ -1,7 +1,6 @@
 package fr.formation.proxi.presentation;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,11 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.formation.proxi.metier.AccountService;
-import fr.formation.proxi.metier.ClientService;
 import fr.formation.proxi.metier.entity.Account;
 import fr.formation.proxi.metier.entity.Client;
-import fr.formation.proxi.metier.entity.CurrentAccount;
-import fr.formation.proxi.metier.entity.SavingsAccount;
 
 /**
  * la class TransferServlet hérite de la class HttpServlet, elle utilise les
