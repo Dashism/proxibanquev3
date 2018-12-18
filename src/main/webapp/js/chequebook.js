@@ -5,18 +5,19 @@ function chequebook(event) {
 	var account = {
 			"id" : accountId
 	};
-	
+	var send = JSON.stringify(account);
 	$.ajax({
-		url: "localhost:8080/proxibanquev3/webservices/json",
+		url: "http://localhost:8080/proxibanquev3/webservices/json",
 		type: "POST",
 		contentType: 'application/json',
-		data: JSON.strngify(account)
+		data: send,
+		dataType: 'json'
 	}).done(function(status) {
-		var result = document.getElementById("result-"+accountId);
+//		var result = document.getElementById("result-"+accountId);
 		if (status.valid) {
-			result.append($("<h6 style='color:purple'>"+status.message+"</h6>"));
+			$("#result-"+accountId).append($("<h6 style='color:purple'>"+status.message+"</h6>"));
 		} else {
-			result.append($("<h6 style='color:orange'>"+status.message+"</h6>"));
+			$("#result-"+accountId).append($("<h6 style='color:orange'>"+status.message+"</h6>"));
 		}
 	});
 }

@@ -106,14 +106,10 @@
 										<button class="button">Retrait CB</button>
 									</a>
 								</div>
-								<form method="post" action="">
 									<div class="retraitchequier-button">
 										<div id="result-${currentAccount.id}"></div>
-<%-- 										<a href="retraitchequier.html?id=${currentAccount.id}"> --%>
 											<button class="button" id="button-${currentAccount.id}" onclick="chequebook(event)">Retrait Chéquier</button>
-<!-- 										</a> -->
 									</div>
-								</form>
 							</div>
 						</div>
 					</c:forEach>
@@ -134,9 +130,7 @@
 								<p>${savingsAccount.balance}&#8364</p>
 								<div class="retraitchequier-button">
 									<div id="result-${savingsAccount.id}"></div>
-<%-- 									<a href="retraitchequier.html?id=${savingsAccount.id}"> --%>
 										<button class="button" id="button-${savingsAccount.id}" onclick="chequebook(event)">Retrait Chéquier</button>
-<!-- 									</a> -->
 								</div>
 							</div>
 						</div>

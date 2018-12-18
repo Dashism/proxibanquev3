@@ -139,7 +139,7 @@ public class AccountService {
 				account.setChequebook(null);;
 				this.accountDao.update(account);
 				this.chequebookDao.delete(chequebookId);
-				status.setMessage("Nouveau chéquier valable jusqu'au " + (LocalDate.now().plusMonths(3)) + " en cours de distribution...");
+				status.setMessage("Nouveau chéquier valable jusqu'au " + (LocalDate.now().plusMonths(3).plusWeeks(2)) + " en cours de distribution...");
 			} else {
 				resultOk = false;
 				status.setValid(resultOk);
