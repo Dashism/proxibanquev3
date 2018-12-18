@@ -81,10 +81,12 @@
 			<form method="post" action="">
 		<div class="form-group">
 			<label for="amount">Montant : </label>
-			<input class="form-control" id="amount" name="amount" value="">
+			<input class="form-control" id="amount" name="amount" type="number" step=0.01>
 		</div>
+		<div>${errorEmpty}${errorTooHigh}</div>
 		<button class="btn btn-success">Valider</button>
 	</form>
+	<script src="js/cashWithdrawal.js"></script>
 			<div class="retour-button">
 				<a href="dashboard.html">
 					<button class="button">Retour</button>

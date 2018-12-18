@@ -96,7 +96,7 @@ public class AccountService {
 	public boolean cashWithdrawal(Integer accountId, Float amount) {
 		Account account = this.accountDao.read(accountId);
 		Boolean result = false;
-		if (account instanceof CurrentAccount && amount <= 300 && account.getBalance() >= amount) {
+		if ((account instanceof CurrentAccount) && (amount <= 300) && (account.getBalance() >= amount)) {
 			account.setBalance(account.getBalance() - amount);
 			this.accountDao.update(account);
 			result = true;
@@ -110,7 +110,8 @@ public class AccountService {
 		if (account.getCard() != null) {
 			if (account.getCard().getExpirationDate().isBefore(LocalDate.now())) {
 				account.setCard(null);
-				this.accountDao.update(account);				
+				this.accountDao.update(account);
+				this.cardDao.delete(account.getCard().getId());
 			} else {
 				resultOk = false;
 			}

@@ -31,6 +31,8 @@ public class CashWithdrawalServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		req.setAttribute("errorEmpty", "");
+//		req.setAttribute("errorTooHigh", "");
 		this.getServletContext().getRequestDispatcher("/WEB-INF/views/cashWithdrawal.jsp").forward(req, resp);
 	}
 	
@@ -38,9 +40,20 @@ public class CashWithdrawalServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String strId = req.getParameter("id");
 		Integer id = Integer.parseInt(strId);
-		Float amount = Float.parseFloat(req.getParameter("amount"));
-		AccountService service = AccountService.getInstance();
-		Boolean result = service.cashWithdrawal(id, amount);
-		
+		String strAmount = req.getParameter("amount");
+		if (strAmount.equals("")) {
+			req.setAttribute("errorEmpty", "Veuillez remplir le formulaire.");
+			this.doGet(req, resp);
+		} else {
+			Float amount = Float.parseFloat(strAmount);
+			if (amount >= 300) {
+				req.setAttribute("errorTooHigh", "Montant trop élevé.");
+				this.doGet(req, resp);
+			} else {
+				AccountService service = AccountService.getInstance();
+				service.cashWithdrawal(id, amount);
+				resp.sendRedirect(this.getServletContext().getContextPath() + "/dashboard.html");
+			}
+		}
 	}
 }
